@@ -165,3 +165,14 @@ pub async fn set_setting(db: &Db, key: &str, value: &str) -> Result<()> {
         .bind(key).bind(value).execute(db).await?;
     Ok(())
 }
+
+/// Called once at startup: anything that was mid-flight when the previous process died can no
+/// longer be resolved (approval channels live in memory), so close it out explicitly.
+pub async fn expire_stale(db: &Db) -> Result<u64> {
+    let n = now();
+    let r1 = sqlx::query("UPDATE intents SET status = 'expired', decided_by = 'restart', error = 'firewall restarted while waiting for a decision', updated_at = ? WHERE status IN ('pending','awaiting_approval')")
+        .bind(n).execute(db).await?.rows_affected();
+    let r2 = sqlx::query("UPDATE intents SET status = 'failed', error = 'firewall restarted mid-execution; verify the signature on-chain before retrying', updated_at = ? WHERE status IN ('allowed','executing')")
+        .bind(n).execute(db).await?.rows_affected();
+    Ok(r1 + r2)
+}

@@ -14,6 +14,12 @@ REINS is a **non-custodial firewall** between an agent and its owner's wallet on
 
 Three layers of defense: **off-chain policy** (fine-grained) → **human** (exceptions) → **on-chain allowance** (hard ceiling).
 
+**Demo video:** _coming before submission_ · **Pitch:** [docs/pitch-script.md](docs/pitch-script.md) · **Architecture:** [docs/architecture.md](docs/architecture.md)
+
+![REINS dashboard — live spend requests, on-chain cap, Telegram-linked approvals](docs/img/dashboard.png)
+
+Every row above is a real devnet transaction: a $0.05 call auto-allowed, $1.20 and $5.00 calls approved with one tap on Telegram, and a prompt-injected transfer denied at risk 100 before it reached the phone or the chain.
+
 | If this is compromised… | …the attacker can |
 |---|---|
 | the agent (prompt injection) | only *ask*. It has no key. |
@@ -106,6 +112,10 @@ Why two steps? The public facilitator verifies a `TransferChecked` from the paye
 
 Risk = size (0–40) + new recipient (20) + suspicious phrases (50 each) + velocity (30) + over daily cap (15).
 `risk ≥ 80` or over hard max or over the **remaining on-chain allowance** → `DENY`; small + low risk → `ALLOW`; otherwise `ASK`.
+
+## Demo
+
+Shot list and fallbacks: [docs/demo-script.md](docs/demo-script.md).
 
 ## Not in the MVP (roadmap)
 

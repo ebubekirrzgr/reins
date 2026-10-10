@@ -24,6 +24,14 @@ async fn main() -> Result<()> {
 
     let cfg = Arc::new(config::Config::from_env()?);
     let db = db::connect(&cfg.database_url).await?;
+    match db::expire_stale(&db).await {
+        Ok(0) => {}
+        Ok(n) => {
+            tracing::warn!("closed {n} intent(s) left in-flight by the previous run");
+            let _ = db::audit(&db, None, "restart_cleanup", json!({ "closed": n })).await;
+        }
+        Err(e) => tracing::warn!("stale intent cleanup failed: {e}"),
+    }
     let chain = chain::Chain::new(&cfg.rpc_url, &cfg.delegate_keypair_path, &cfg.usdc_mint, cfg.owner_pubkey.as_deref())?;
     tracing::info!("delegate (firewall hot key) = {}", chain.delegate_address());
 
