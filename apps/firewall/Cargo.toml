@@ -1,0 +1,45 @@
+[package]
+name = "reins-firewall"
+version = "0.1.0"
+edition = "2021"
+default-run = "reins-firewall"
+
+[[bin]]
+name = "reins-firewall"
+path = "src/main.rs"
+
+[dependencies]
+# web
+axum = { version = "0.8", features = ["macros"] }
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+# data
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "tls-rustls", "sqlite", "chrono", "macros", "migrate"] }
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1", features = ["v4"] }
+rust_decimal = "1"
+# infra
+anyhow = "1"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+dotenvy = "0.15"
+# solana (versions aligned with the `subscriptions` 0.5 client lockfile)
+subscriptions = { version = "0.5", features = ["fetch"] }
+solana-address = { version = "2.6", features = ["curve25519", "decode"] }
+solana-instruction = "3"
+solana-keypair = "3"
+solana-signer = "3"
+solana-transaction = "3"
+solana-message = "3"
+solana-hash = "3"
+solana-rpc-client = "3.1"
+solana-rpc-client-api = "3.1"
+solana-commitment-config = "3"
+solana-account-decoder-client-types = "3.1"
+solana-system-interface = "2"
+bs58 = "0.5"
+base64 = "0.22"

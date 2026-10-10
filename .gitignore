@@ -1,0 +1,9 @@
+target/
+node_modules/
+.env
+*.db
+*.db-*
+keys/*.json
+.next/
+dist/
+.DS_Store

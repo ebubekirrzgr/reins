@@ -1,0 +1,11 @@
+import { createSolanaRpc, address } from "@solana/kit";
+const rpc = createSolanaRpc("https://api.devnet.solana.com");
+const d = address("AComWiwWgpk1bJgWFRqfGiseAJBbB2FUGJ3mme2aECbH");
+const usdc = address("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
+const sol = await rpc.getBalance(d, { commitment: "processed" }).send();
+console.log("delegate SOL (processed):", Number(sol.value) / 1e9);
+const t = await rpc.getTokenAccountsByOwner(d, { mint: usdc }, { encoding: "jsonParsed" }).send();
+console.log("delegate USDC:", t.value[0]?.account.data.parsed?.info?.tokenAmount?.uiAmountString ?? "0 (no ATA)");
+const sigs = await rpc.getSignaturesForAddress(d, { limit: 5 }).send();
+console.log("recent txs:", sigs.length);
+for (const s of sigs) console.log(" ", s.signature, s.confirmationStatus, s.err ? "ERR" : "ok", new Date(Number(s.blockTime) * 1000).toISOString());

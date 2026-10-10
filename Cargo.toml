@@ -1,0 +1,6 @@
+[workspace]
+resolver = "2"
+members = ["apps/firewall"]
+
+[profile.dev]
+opt-level = 1

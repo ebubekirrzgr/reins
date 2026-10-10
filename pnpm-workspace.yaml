@@ -1,0 +1,4 @@
+packages:
+  - "apps/x402-sidecar"
+  - "apps/demo-merchant"
+  - "apps/dashboard"
