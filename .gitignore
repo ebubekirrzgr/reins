@@ -7,3 +7,4 @@ keys/*.json
 .next/
 dist/
 .DS_Store
+apps/pitch-video/out/

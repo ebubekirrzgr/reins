@@ -1,0 +1,23 @@
+{
+  "name": "@reins/pitch-video",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Pitch out/reins-pitch.mp4 --codec h264",
+    "still": "remotion still src/index.ts Pitch out/frame.png --frame",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.534",
+    "@remotion/google-fonts": "4.0.534",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "4.0.534"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.9.0"
+  }
+}

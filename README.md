@@ -7,7 +7,7 @@
 Agent asks · policy filters · human approves · chain caps.</p>
 
 <p align="center">
-  <a href="#demo">Demo</a> · <a href="#why-solana">Why Solana</a> · <a href="#how-it-works">How it works</a> · <a href="#quick-start-devnet">Quick start</a> · <a href="#api">API</a> · <a href="docs/architecture.md">Architecture</a> · <a href="docs/pitch-script.md">Pitch</a>
+  <a href="https://youtu.be/j9FjRBhmfeU">Video</a> · <a href="#demo">Demo</a> · <a href="#why-solana">Why Solana</a> · <a href="#how-it-works">How it works</a> · <a href="#quick-start-devnet">Quick start</a> · <a href="#api">API</a> · <a href="docs/architecture.md">Architecture</a> · <a href="docs/pitch-script.md">Pitch</a>
 </p>
 
 ---
@@ -66,7 +66,9 @@ REINS is not a chain-agnostic idea ported to Solana. It only works well because 
 
 ## Demo
 
-**Video:** _link added before submission_ · shot list and fallbacks in [docs/demo-script.md](docs/demo-script.md).
+**Video:** [youtu.be/j9FjRBhmfeU](https://youtu.be/j9FjRBhmfeU) (1:46) · generated with Remotion from `apps/pitch-video` (`pnpm video:studio` to preview, `pnpm video:render` to export) · live shot list in [docs/demo-script.md](docs/demo-script.md).
+
+[![REINS pitch video](https://img.youtube.com/vi/j9FjRBhmfeU/maxresdefault.jpg)](https://youtu.be/j9FjRBhmfeU)
 
 ![REINS dashboard — live spend requests, on-chain cap, Telegram-linked approvals](docs/img/dashboard.png)
 
@@ -120,6 +122,7 @@ apps/dashboard       Next.js · @solana/kit + Wallet Standard: grant/revoke allo
 apps/x402-sidecar    Node · hono: quote-without-paying + standard x402 payment (@x402/fetch, @x402/svm)
 apps/demo-merchant   Node · express + @x402/express: two paid endpoints on Solana devnet
 demo/agent.ts        the agent — holds no keys, runs the three scenarios
+apps/pitch-video     Remotion: the pitch video, a frame-accurate simulation of the product (pnpm video:render)
 scripts/             keygen, airdrop, balances, dev-setup (no-Phantom path), sweep, ATA helpers
 docs/                architecture, pitch script, demo shot list
 ```

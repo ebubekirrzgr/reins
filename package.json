@@ -2,7 +2,7 @@
   "name": "reins",
   "private": true,
   "version": "0.1.0",
-  "description": "REINS — approval layer for AI agent wallets on Solana (devnet MVP)",
+  "description": "REINS \u2014 approval layer for AI agent wallets on Solana (devnet MVP)",
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "keygen": "tsx scripts/keygen.ts",
@@ -11,7 +11,9 @@
     "merchant": "pnpm --filter @reins/demo-merchant dev",
     "dashboard": "pnpm --filter @reins/dashboard dev",
     "firewall": "cargo run -p reins-firewall",
-    "agent": "tsx demo/agent.ts"
+    "agent": "tsx demo/agent.ts",
+    "video:studio": "pnpm --filter @reins/pitch-video studio",
+    "video:render": "pnpm --filter @reins/pitch-video render"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

@@ -1,0 +1,13 @@
+title|REINS. The approval layer for AI-agent wallets on Solana.
+problem|AI agents are starting to spend money. Give one a private key, and a single prompt injection empties the wallet. Put it in a custodial vault, and you lose both custody and the human in the loop.
+thesis|REINS, in one sentence: the agent asks, the policy filters, the human approves, and the chain caps.
+connect|The owner connects Phantom. Funds stay in this wallet the whole time.
+grant|One signature grants the firewall a recurring allowance: twenty USDC per day, for thirty days, enforced on-chain by the Solana Foundation's audited program.
+s1|Scenario one: a five-cent API call. Policy allows it, the firewall pulls from the allowance, and x402 settles. No human involved.
+s2|Scenario two: a five-dollar report. Policy asks. The owner's phone gets the card.
+tap|One tap. The firewall executes Transfer Recurring and pays the merchant.
+s3|Scenario three: a prompt-injected transfer. Denied at risk one hundred. It never reaches the phone, and never reaches the chain.
+pause|The kill switch. Pause, and every request is denied instantly. Resume when you're back.
+outro|The agent never held a key. The owner never left custody. The chain held the ceiling.
+why|Why Solana? An audited allowance primitive from the Foundation. x402, live with public facilitators. Finality a human can wait for. And fees that make per-call policy affordable.
+close|Give your agent reins, not keys.
